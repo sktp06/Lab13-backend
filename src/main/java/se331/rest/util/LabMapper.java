@@ -20,7 +20,7 @@ public interface LabMapper {
 
     List<OrganizerDTO> getOrganizerDTO(List<Organizer> organizers);
 
-    @Mapping(target = "authorities", expression = "java(organizer.getUser.getAuthorities().stream().map(auth -> auth.getName()).collect(Collectors.toList()))")
+    @Mapping(target = "authorities", expression = "java(organizer.getUser().getAuthorities().stream().map(auth -> auth.getName().name()).collect(Collectors.toList()))")
     OrganizerAuthDTO getOrganizerAuthDTO(Organizer organizer);
 
 }
