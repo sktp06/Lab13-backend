@@ -47,9 +47,10 @@ public class WebSecurityConfig {
         http.cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .authorizeRequests()
-                .antMatchers("/auth/**",  "/refresh", "/organizers").permitAll()
+                .antMatchers("/auth/**",  "/refresh", "/organizers", "/register").permitAll()
                 .antMatchers(HttpMethod.GET,"/event").permitAll()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                .antMatchers(HttpMethod.GET,"/register").permitAll()
                 .antMatchers(HttpMethod.POST,"/event").hasRole("ADMIN")
                 .anyRequest()
                 .authenticated();
